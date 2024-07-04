@@ -89,12 +89,12 @@ class TinderBot():
             print('No notifications popup')
 
 
-        # checks if user is logged in by checking the url
+    # checks if user is logged in by checking the url
     def is_logged_in(self):
         return 'app' in self.driver.current_url
 
 
-        # gather the list of all matches
+    # gather the list of all matches
     def get_matches(self):
         match_profiles = self.driver.find_elements('class name', 'matchListItem')
         print(str(match_profiles))
@@ -115,7 +115,8 @@ class TinderBot():
         for name, link in links:
             self.driver.get(link)
             try:
-                bio = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="u-1419960890"]/div/div[1]/div/main/div[1]/div/div/div/div[2]/div/div/div/div/div[2]/div[2]/div'))).text
+                bio = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="u-1419960890"]/div/div[1]/div/main/div[1]/div/div/div/div[2]/div/div/div/div/div[2]/div[2]/div'))) 
+                bio = bio.get_attribute('textContent').strip()
             except:
                 bio = ":)"
             self.send_message(bio, link)
@@ -128,6 +129,7 @@ class TinderBot():
         text_area = self.driver.find_element('xpath', '/html/body/div[1]/div/div[1]/div/main/div[1]/div/div/div/div[1]/div/div/div[3]/form/textarea')
         llm = MessageGemini(bio)
         message = llm.model_gemini()
+        # if prompt returns null send this message
         if not message.strip():
             message = 'Hej. Miło cię poznać :)'
             
@@ -137,10 +139,12 @@ class TinderBot():
         elm.value += txt;
         elm.dispatchEvent(new Event('change'));
         """
+        # solve problem with emoji
         self.driver.execute_script(js_code, text_area, message)
         text_area.send_keys(" ")
         sleep(10)
         text_area.send_keys(Keys.ENTER)
+        self.driver.execute_script("arguments[0].value = '';", text_area)
 
 
 bot = TinderBot()
