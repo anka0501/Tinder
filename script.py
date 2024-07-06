@@ -131,7 +131,7 @@ class TinderBot():
         message = llm.model_gemini()
         # if prompt returns null send this message
         if not message.strip():
-            message = 'Hej. Miło cię poznać :)'
+            message = 'Hi. Nice to meet you :)'
             
         print(message)
         js_code = """
