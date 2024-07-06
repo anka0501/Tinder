@@ -99,12 +99,12 @@ class TinderBot():
         match_profiles = self.driver.find_elements('class name', 'matchListItem')
         print(str(match_profiles))
         message_links = []
-        for profile in match_profiles[:3]:
+        for profile in match_profiles[23:25]:
             if profile.get_attribute('href') == 'https://tinder.com/app/my-likes' or profile.get_attribute('href') == 'https://tinder.com/app/likes-you':
                 continue
             match_name = profile.find_element(By.CLASS_NAME, 'Ell')
             name = match_name.text
-            print(name)
+            print(name) 
             message_links.append((name, profile.get_attribute('href')))
         return message_links
     
@@ -144,7 +144,7 @@ class TinderBot():
         text_area.send_keys(" ")
         sleep(10)
         text_area.send_keys(Keys.ENTER)
-        self.driver.execute_script("arguments[0].value = '';", text_area)
+        text_area.clear()
 
 
 bot = TinderBot()
