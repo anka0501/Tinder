@@ -1,6 +1,6 @@
 phone_number = 'XXXXXXXX'
 
-path = 'C:/Users/GoogleAppCredentials/bold-artifact-419614-3eac104b4907.json'
+path = 'C:/Users/GoogleKey/bold-artifact-419614-3eac104b4907.json'
 
 project_id = "your-project-name"  # @param {type:"string"}
 
