@@ -1,7 +1,6 @@
 from langchain_google_vertexai import VertexAI
 from langchain_core.prompts import PromptTemplate
 from langchain.chains import LLMChain
-from langchain.memory import ConversationBufferMemory
 import vertexai
 import os
 from configuration import path, project_id, location
@@ -35,7 +34,7 @@ class MessageGemini:
                       temperature=0.9,
                       top_p=0.8,
                       top_k=2,
-                      verbose=True,)
+                      verbose=True)
         return self.model
 
       def model_gemini(self):
