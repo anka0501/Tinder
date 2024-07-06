@@ -17,8 +17,8 @@ def get_prompt(instruction, new_system_prompt):
 
 instruction = "User: {user_input}"
 system_prompt = """
-Napisz świetny tekst na podryw w imieniu kobiety do mężyczyzny na podstawie : {user_input}
-Wiadomość niech zmieści się w jednym zdaniu. Nie używaj znaków interpunkcyjnych.
+Write a great pick-up line for a woman to use on a man, based on: {user_input}. 
+Don't write about yourself, focus on the guy. Keep it to one sentence.
 """
 
 class MessageGemini:
