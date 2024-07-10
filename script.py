@@ -19,7 +19,7 @@ class TinderBot():
         self.driver = webdriver.Chrome(options=options)
 
     def open_tinder(self):
-        time.sleep(random.randint(2, 5))
+        sleep(random.randint(2, 5))
         self.driver.get("https://tinder.com")
         login_button = WebDriverWait(self.driver, 15).until(EC.presence_of_element_located((By.XPATH, '//div[contains(text(), "Zaloguj się")]'))) #Log in
         login_button.click()
@@ -35,7 +35,7 @@ class TinderBot():
 
     def sms_login(self):
         # find and click sms login button 
-        time.sleep(random.randint(2, 5))
+        sleep(random.randint(2, 5))
         login_with_sms = WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, '//div[contains(text(), "Zaloguj się podając numer telefonu")]'))) #Log in with your phone number
         login_with_sms.click()
         sleep(5)
@@ -46,7 +46,7 @@ class TinderBot():
 
         # check every second if user has bypassed sms-code barrier
         while not self.is_logged_in():
-            time.sleep(9)
+            sleep(9)
         
         try:
             allow_location_button = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, '//div[contains(text(), "Zezwól")]'))) #Allow
