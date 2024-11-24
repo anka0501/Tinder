@@ -3,3 +3,6 @@ For this purpose, a prompt is sent to Gemini with the following instruction "Wri
 
 To run the application, it is necessary to create an account on Google Cloud Platform and generate a key according to the following instructions:
 https://www.youtube.com/watch?v=tCpGtGKZKQc
+
+You can read more about how to build this application in my article at this link:
+https://medium.com/p/51216594466d
