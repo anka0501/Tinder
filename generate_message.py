@@ -15,7 +15,6 @@ Don't write about yourself, focus on the guy. Keep it to one sentence.
 """
 
 class MessageGemini:
-        
       def __init__(self, description):
         self.description = description
         self.model = None 
